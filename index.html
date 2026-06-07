@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowForge Pro - Task Manager</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#0d6efd">
+  <meta name="description" content="FlowForge Pro is a modern task and project management tool. Create tasks, categorize them, and track progress offline.">
+</head>
+<body>
+  <header>
+    <h1>FlowForge Pro</h1>
+    <div class="controls">
+      <button id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
+      <button id="addTaskBtn" aria-label="Add new task">➕ New Task</button>
+    </div>
+  </header>
+  <main>
+    <aside id="categoryList">
+      <h2>Categories</h2>
+      <ul id="categories"></ul>
+      <button id="addCategoryBtn" aria-label="Add new category">+ Add Category</button>
+    </aside>
+    <section id="taskSection">
+      <div class="filter-bar">
+        <input type="search" id="searchInput" placeholder="Search tasks...">
+        <select id="sortSelect">
+          <option value="dueDate">Sort by Due Date</option>
+          <option value="priority">Sort by Priority</option>
+          <option value="createdAt">Sort by Created</option>
+        </select>
+      </div>
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+  </main>
+
+  <!-- Task Modal -->
+  <div class="modal" id="taskModal" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <h2 id="modalTitle">Add Task</h2>
+      <form id="taskForm">
+        <label>Title
+          <input type="text" id="taskTitle" required>
+        </label>
+        <label>Description
+          <textarea id="taskDescription" rows="3"></textarea>
+        </label>
+        <label>Due Date
+          <input type="date" id="taskDueDate">
+        </label>
+        <label>Priority
+          <select id="taskPriority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label>Category
+          <select id="taskCategory"></select>
+        </label>
+        <div class="modal-actions">
+          <button type="submit">Save</button>
+          <button type="button" id="cancelTaskBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal" id="categoryModal" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <h2>Add Category</h2>
+      <form id="categoryForm">
+        <label>Category Name
+          <input type="text" id="categoryName" required>
+        </label>
+        <div class="modal-actions">
+          <button type="submit">Add</button>
+          <button type="button" id="cancelCategoryBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
